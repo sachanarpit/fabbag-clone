@@ -4,6 +4,10 @@ const mongoose = require("mongoose");
 
 const connect = require("./configs/db");
 
+//controller filelist
+
+const userController = require(`./controller/user.controller`);
+
 const app = express();
 
 app.set("view Engine", "ejs");
@@ -11,6 +15,7 @@ app.set("view Engine", "ejs");
 app.use(express.static("/public"));
 
 app.use(express.json());
+app.use("/users", userController);
 
 // port listeing
 app.listen(2349, async () => {
