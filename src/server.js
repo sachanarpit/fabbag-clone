@@ -6,11 +6,11 @@ const connect = require("./configs/db");
 
 const app = express();
 
-// app.set("view Engine", "ejs");
+app.set("view Engine", "ejs");
 
-// app.use(express.static("/public"));
+app.use(express.static("/public"));
 
-// app.use(express.json());
+app.use(express.json());
 
 // port listeing
 app.listen(2349, async () => {
