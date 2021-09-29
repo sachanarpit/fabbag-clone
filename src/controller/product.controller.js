@@ -20,14 +20,18 @@ router.get("", async (req, res) => {
 router.get("/search/:name", (req, res) => {
   let regex = new RegExp(req.params.name, "i");
   Product.find({ name: regex })
-    .limit(10)
+    .limit(5)
     .then((result) => {
       return res.status(200).json(result);
     });
 });
 
 router.get("/:id", async (req, res) => {
-  const user = await Product.findById(req.params.id).lean().exec();
-  return res.status(200).send({ user });
+  const product = await Product.findById(req.params.id).lean().exec();
+  //   return res.status(200).send({ user });
+
+  return res.render("product.ejs", {
+    product: product,
+  });
 });
 module.exports = router;

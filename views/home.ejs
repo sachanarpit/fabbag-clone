@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <style>
+      #popup {
+        position: fixed;
+        top: -100%;
+        left: 50%;
+        transform: translate(-50%, -100%);
+        z-index: 1000;
+        background: #fff;
+        width: 100%;
+        padding: 90px 50px 50px;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+        transition: 0.5s;
+        visibility: hidden;
+      }
+      #popup.active {
+        visibility: visible;
+        top: 90%;
+      }
+      .content {
+        position: relative;
+        width: 100%;
+      }
+      .content > img {
+        max-width: 80px;
+      }
+      .content > h2 {
+        font-size: 24px;
+        font-weight: 500;
+        color: #333;
+        margin: 20px 0 10px;
+      }
+
+      .content > p {
+        text-align: center;
+        font-size: 16px;
+        color: #333;
+      }
+      .inputbox {
+        position: relative;
+        width: 100%;
+        margin-top: 20px;
+      }
+      .inputbox > input {
+        width: 100%;
+        border: 1px solid #333;
+        padding: 15px;
+        outline: none;
+        font-size: 18px;
+      }
+      .inputbox > input[type="submit"] {
+        max-width: 150px;
+        background: rgb(85, 85, 190);
+        color: white;
+        border: none;
+      }
+      .close {
+        position: absolute;
+        top: 30px;
+        right: 30px;
+        cursor: pointer;
+      }
+
+      /* seach results  */
+
+      .search-results {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .search-products {
+        display: flex;
+        flex-direction: row;
+        gap: 30px;
+      }
+      .search-products > img {
+        width: 50px;
+        height: 50px;
+      }
+    </style>
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <!-- _____________________________________________________ -->
+    <!-- navbar start  -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a
+        class="navbar-brand"
+        href="http://localhost:2349/products/61538d3f5a247e5988d5c2c7"
+        >SUBSCRIBE NOW</a
+      >
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul
+          class="navbar-nav ml-auto"
+          style="background-color: rgba(165, 42, 42, 0)"
+        >
+          <img
+            style="
+              width: 15vw;
+              height: 8vh;
+              background-color: rgba(141, 100, 100, 0);
+            "
+            src="https://cdn.shopify.com/s/files/1/0052/7551/6995/files/FABBAG-LOGO_96ac9306-4c81-4ab8-8d2b-4e818eed7f76_2048x.png?v=1606482289"
+            alt=""
+          />
+        </ul>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#" onclick="popupToggle()"
+              ><img
+                src="https://img.icons8.com/ios-filled/25/000000/search--v2.png"
+              />
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"
+              ><img
+                src="https://img.icons8.com/material-outlined/24/000000/like--v2.png"
+            /></a>
+          </li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              <img src="https://img.icons8.com/ios-glyphs/24/000000/user.png" />
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link active"
+              href="#"
+              tabindex="-1"
+              aria-disabled="true"
+              ><img
+                src="https://img.icons8.com/material-rounded/24/000000/favorite-cart.png"
+            /></a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!-- navbar ends  -->
+
+    <!-- navbar search popup  -->
+    <div id="popup">
+      <div class="content">
+        <div class="inputbox">
+          <input
+            type="email"
+            placeholder="search product"
+            id="query"
+            onkeyup="Debaunce(main , 4000)"
+          />
+        </div>
+      </div>
+      <br />
+      <div class="search-results" id="search_main">
+        <a href="#">
+          <div class="search-products">
+            <img
+              src="https://cdn.shopify.com/s/files/1/0052/7551/6995/products/Women_sPageBanner-Skincare-Reveal-4-5_2faddde5-aa4f-4393-a694-5596034b6fed.png?v=1631337975"
+              alt=""
+            />
+            <p>The She-9-Igans September Fab Bag</p>
+            <p>Rs. 699.00</p>
+          </div>
+        </a>
+      </div>
+      <a href="#" class="close" onclick="popupToggle()"
+        ><img
+          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyhpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDIxIDc5LjE1NTc3MiwgMjAxNC8wMS8xMy0xOTo0NDowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTQgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MDA0NjVCNEM1NzE2MTFFNDhERDFFNjZCMDFBOTNERTgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MDA0NjVCNEQ1NzE2MTFFNDhERDFFNjZCMDFBOTNERTgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo0REQ4QjM3RjU3MTMxMUU0OEREMUU2NkIwMUE5M0RFOCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo0REQ4QjM4MDU3MTMxMUU0OEREMUU2NkIwMUE5M0RFOCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pv+S3nUAAAGaSURBVHja7NrBaoNAEAZgV3osoZScG0pewJfpXfCe3PTax+hjFPoefQc9ePBUQs/dzg8riKSNM6O2THZhIAg7zpeY3XXVee8TCy1NjLQIiZAIuRLIjaLvhuKO4pPig+JL8WUiz23Ic1rzF9lSPFVV9do0zYE+75DLOZdwIpx/hxzIhZwhN79hQmTGluKY5zlmUp9lmW/b9oWOPVKkjPOm6IO+yIFDyInc4RysulSIPriYc4g+pBg1gov5DaHBzIKYipmCkGJmQ1zCcBASzCXEhqKYivgJI0GMMEWoRQx5KMvynXPiM5g9QoLoAzWgFg3kvq7rZ2kB6Nd13RtCkwM1oBYNRHxJDAvR9B1doqo/uxqzNIIz/K6K4SK4E+IqGAlCskRZFCNFSCCLYTQIKWR2jBahgfSYvWaOGM41YeJMpfWYudW96kvLxJ/dxPBrYkI0sUQxsWg0s4w3c2Nl5lbXzOaDme0gUxt0prZMTW1im3qsMMQUGBbDGM9CjDHIEYbYQoJAOMWbD//q0ZuLr3BESIRESIT8RfsWYAA9kzqUqVtSdgAAAABJRU5ErkJggg=="
+          alt=""
+      /></a>
+    </div>
+    <!-- navbar search popup ends  -->
+
+    <!-- slider code starts  -->
+    <!-- _____________________________________________________ -->
+
+    <div id="demo" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+
+      <!-- The slideshow -->
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <a href="#">
+            <img
+              src="https://cdn.shopify.com/s/files/1/0052/7551/6995/files/Homepage-Banner-Skincare--3_2048x.png?v=1631165190"
+              alt="Los Angeles"
+              width="100%"
+            />
+          </a>
+        </div>
+        <div class="carousel-item">
+          <a href="#">
+            <img
+              src="https://cdn.shopify.com/s/files/1/0052/7551/6995/files/Homepage-Banner-Skincare-5_2048x.png?v=1631337593"
+              alt="Chicago"
+              width="100%"
+            />
+          </a>
+        </div>
+        <div class="carousel-item">
+          <a href="#">
+            <img
+              src="https://cdn.shopify.com/s/files/1/0052/7551/6995/files/Homepage-Banner-Skincare_9e8aeb6e-a40a-40ea-baef-b48024ee5851_2048x.png?v=1630819018"
+              alt="New York"
+              width="100%"
+            />
+          </a>
+        </div>
+        <div class="carousel-item">
+          <a href="#">
+            <img
+              src="https://cdn.shopify.com/s/files/1/0052/7551/6995/files/Homepage-Banner-Skincare-4_9ba9cd84-0122-4ddf-9f76-726bee694459_2048x.png?v=1631337216"
+              alt="New York"
+              width="100%"
+            />
+          </a>
+        </div>
+      </div>
+
+      <!-- Left and right controls -->
+      <a class="carousel-control-prev" href="#demo" data-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </a>
+      <a class="carousel-control-next" href="#demo" data-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </a>
+    </div>
+
+    <!-- slider code ends   -->
+    <!-- _____________________________________________________ -->
+
+    <!-- what's in the bag carousel starts  -->
+    <!-- _____________________________________________________ -->
+  </body>
+</html>
+<script
+  src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+  integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+  crossorigin="anonymous"
+></script>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+  integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+  crossorigin="anonymous"
+></script>
+<script
+  src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+  integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+  crossorigin="anonymous"
+></script>
+
+<script>
+  //search bar button start
+  function popupToggle() {
+    const popup = document.getElementById("popup");
+    popup.classList.toggle("active");
+  }
+  // search bar button ends
+
+  //search api fetcing
+
+  async function searchProduct(name) {
+    let res = await fetch(`http://localhost:2349/products/search/${name}`);
+    let data = await res.json();
+    return data;
+  }
+
+  let main_div = document.getElementById("search_main");
+
+  function appendProducts(m) {
+    main_div.innerHTML = null;
+    m.forEach(({ name, _id, price, price_sign, image_link }) => {
+      //   let p = document.createElement("p");
+      //   p.innerText = _id;
+      let a = document.createElement("a");
+      a.href = `http://localhost:2349/products/${_id}`;
+      a.innerHTML = `  <div class="search-products">
+            <img
+              src="${image_link}"
+              alt=""
+            />
+            <p>${name}</p>
+            <p>${price_sign} ${price}</p>
+          </div><br />`;
+      main_div.append(a);
+    });
+  }
+
+  async function main() {
+    let name = document.getElementById("query").value;
+    let products = await searchProduct(name);
+    if (products == undefined) {
+      return false;
+    }
+    appendProducts(products);
+    console.log(products);
+  }
+
+  function Debaunce(func, delay) {
+    let name = document.getElementById("query").value;
+    if (name.lenght < 2) {
+      return false;
+    }
+    setTimeout(() => {
+      func();
+    }, delay);
+  }
+</script>
