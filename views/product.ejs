@@ -1,13 +1,191 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>addtocart</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      /*-----------------------*/
+
+      /*add to cart------------------*/
+      #addcart {
+        display: flex;
+        flex-direction: row;
+        width: 90%;
+        margin: auto;
+        margin-top: 100px;
+      }
+      #image img {
+        width: 500px;
+        height: 300px;
+      }
+      #details {
+        margin-left: 50px;
+        line-height: 50px;
+        justify-content: center;
+      }
+      #details button {
+        border: none;
+        margin: 20px;
+        cursor: pointer;
+      }
+      #details p {
+        font-size: 20px;
+      }
+      #details button:hover {
+        background-color: #e5b95f;
+        padding: 5px;
+      }
+      .add_sub {
+        display: flex;
+        width: 120px;
+        height: 50px;
+        border: 1px solid gray;
+      }
+      .add_sub :nth-child(2) {
+        margin: 0 40px;
+      }
+      .add_sub :nth-child(1) {
+        font-size: 60px;
+        margin-left: 10px;
+      }
+      .add_sub p {
+        cursor: pointer;
+      }
+      #carttext {
+        background-color: black;
+        color: white;
+        width: 100%;
+        height: 50px;
+        margin-top: 20px;
+        text-align: center;
+        cursor: pointer;
+      }
+      #carttext:hover {
+        display: none;
+      }
+      #carttext:hover + #carticon {
+        display: block;
+      }
+      #carticon {
+        width: 100%;
+        height: 50px;
+        background-color: #e5b95f;
+        text-align: center;
+        display: none;
+        cursor: pointer;
+        margin-top: 20px;
+      }
+      #carticon img {
+        height: 30px;
+        width: 30px;
+        padding: 5px;
+      }
+    </style>
+    <link rel="stylesheet" href="../css/home.css" />
+    <%- include("partials/boilerPlateCss.ejs") %>
   </head>
   <body>
-    <h1><%= product.name %></h1>
-    <!-- <h1>mail -<%= product.email %></h1> -->
+    <%- include("partials/navbar.ejs") %>
+    <div class="container">
+      <!--navigation-->
+
+      <!--==========================================================================================-->
+
+      <div id="addcart">
+        <div id="image">
+          <img src="<%= product.image_link %>" />
+        </div>
+        <div id="details">
+          <p><a><%= product.brand %></a></p>
+          <h1><%= product.name %></h1>
+          <h1>
+            <%= product.price_sign %>.<span id="price"
+              ><%= product.price %></span
+            >.00
+          </h1>
+          <p>Product Type : <%= product.product_type %></p>
+          <p>category: <%= product.category %></p>
+          <h3>Plans</h3>
+          <div>
+            <button onclick="planchange(1 ,  <%= product.price %> )">
+              1 MONTH
+            </button>
+            <button onclick="planchange(3 , <%= product.price %>)">
+              3 MONTH
+            </button>
+            <button onclick="planchange(6 ,  <%= product.price %>)">
+              6 MONTH
+            </button>
+            <button onclick="planchange(12 ,  <%= product.price %>)">
+              12 MONTH
+            </button>
+          </div>
+          <div class="add_sub">
+            <p onclick="decreaseQunt()">-</p>
+            <p id="Qunt">1</p>
+            <p onclick="increaseQunt()">+</p>
+          </div>
+          <div id="carttext">ADD TO CART</div>
+          <div id="carticon" onclick="gotocart()">
+            <img src="https://image.flaticon.com/icons/png/128/34/34568.png" />
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
+
+<%- include("partials/boilerPlateJs.ejs") %>
+<script>
+  function showsidenav() {
+    document.getElementById("sidenav").style.display = "block";
+  }
+  function hidesidenav() {
+    document.getElementById("sidenav").style.display = "none";
+  }
+  function showupnav() {
+    document.getElementById("upnav").style.display = "block";
+  }
+  function hideupnav() {
+    document.getElementById("upnav").style.display = "none";
+  }
+
+  //===============================================
+  function planchange(no, val) {
+    var price = document.getElementById("price");
+    if (no == 1) {
+      price.innerText = val;
+    } else if (no == 3) {
+      price.innerHTML = val * 3 - (val * 3) / 10;
+    } else if (no == 6) {
+      price.innerText = val * 6 - (val * 6) / 10;
+    } else if (no == 12) {
+      price.innerText = val * 12 - (val * 12) / 10;
+    }
+  }
+  //=======================================
+  function increaseQunt() {
+    let qunt = document.getElementById("Qunt");
+    qunt.innerText = Number(qunt.innerText) + 1;
+  }
+  function decreaseQunt() {
+    let qunt = document.getElementById("Qunt");
+    if (Number(qunt.innerText) == 1) {
+      qunt.innerText = 1;
+    } else {
+      qunt.innerText = Number(qunt.innerText) - 1;
+    }
+  }
+  function gotocart() {
+    var price = document.getElementById("price").innerText;
+    var qnt = document.getElementById("Qunt").innerText;
+    var total = Number(price) * Number(qnt);
+    localStorage.setItem("total", JSON.stringify(total));
+    window.location = "cart.html";
+  }
+</script>
+<script src="../scripts/home.js"></script>
