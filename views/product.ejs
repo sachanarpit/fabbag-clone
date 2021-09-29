@@ -15,8 +15,9 @@
         display: flex;
         flex-direction: row;
         width: 90%;
-        margin: auto;
         margin-top: 100px;
+        margin-left: 7%;
+        margin-right: 3%;
       }
       #image img {
         width: 500px;
@@ -69,6 +70,7 @@
       }
       #carttext:hover + #carticon {
         display: block;
+        transition-delay: 20px;
       }
       #carticon {
         width: 100%;
@@ -90,49 +92,64 @@
   </head>
   <body>
     <%- include("partials/navbar.ejs") %>
-    <div class="container">
-      <!--navigation-->
 
-      <!--==========================================================================================-->
+    <!--navigation-->
 
-      <div id="addcart">
-        <div id="image">
-          <img src="<%= product.image_link %>" />
+    <!--==========================================================================================-->
+
+    <div id="addcart">
+      <div id="image">
+        <img src="<%= product.image_link %>" />
+      </div>
+      <div id="details">
+        <p><a><%= product.brand %></a></p>
+        <h1><%= product.name %></h1>
+        <h1>
+          <%= product.price_sign %>.<span id="price"><%= product.price %></span
+          >.00
+        </h1>
+        <p>Product Type : <%= product.product_type %></p>
+        <p>category: <%= product.category %></p>
+        <h3>Plans</h3>
+        <div>
+          <button onclick="planchange(1 ,  <%= product.price %> )">
+            1 MONTH
+          </button>
+          <button onclick="planchange(3 , <%= product.price %>)">
+            3 MONTH
+          </button>
+          <button onclick="planchange(6 ,  <%= product.price %>)">
+            6 MONTH
+          </button>
+          <button onclick="planchange(12 ,  <%= product.price %>)">
+            12 MONTH
+          </button>
         </div>
-        <div id="details">
-          <p><a><%= product.brand %></a></p>
-          <h1><%= product.name %></h1>
-          <h1>
-            <%= product.price_sign %>.<span id="price"
-              ><%= product.price %></span
-            >.00
-          </h1>
-          <p>Product Type : <%= product.product_type %></p>
-          <p>category: <%= product.category %></p>
-          <h3>Plans</h3>
-          <div>
-            <button onclick="planchange(1 ,  <%= product.price %> )">
-              1 MONTH
-            </button>
-            <button onclick="planchange(3 , <%= product.price %>)">
-              3 MONTH
-            </button>
-            <button onclick="planchange(6 ,  <%= product.price %>)">
-              6 MONTH
-            </button>
-            <button onclick="planchange(12 ,  <%= product.price %>)">
-              12 MONTH
-            </button>
-          </div>
-          <div class="add_sub">
-            <p onclick="decreaseQunt()">-</p>
-            <p id="Qunt">1</p>
-            <p onclick="increaseQunt()">+</p>
-          </div>
-          <div id="carttext">ADD TO CART</div>
-          <div id="carticon" onclick="gotocart()">
-            <img src="https://image.flaticon.com/icons/png/128/34/34568.png" />
-          </div>
+        <div class="add_sub">
+          <p onclick="decreaseQunt()">-</p>
+          <p id="Qunt">1</p>
+          <p onclick="increaseQunt()">+</p>
+        </div>
+        <div id="carttext">ADD TO CART</div>
+        <div id="carticon" onclick="gotocart()">
+          <img src="https://image.flaticon.com/icons/png/128/34/34568.png" />
+        </div>
+        <br />
+        <div class="social_share">
+          <p>share now</p>
+          <a
+            href="https://twitter.com/share?url=https://www.fabbag.com/products/subscribe&text=The%20She-9-igans%20September%20Fab%20Bag"
+            ><img src="https://img.icons8.com/color/48/000000/twitter--v1.png"
+          /></a>
+          <a
+            href="https://www.facebook.com/sharer/sharer.php?u=https://www.fabbag.com/products/subscribe"
+            ><img src="https://img.icons8.com/color/48/000000/facebook-new.png"
+          /></a>
+          <a
+            href="https://plus.google.com/share?url=https://www.fabbag.com/products/subscribe"
+            ><img
+              src="https://img.icons8.com/color/48/000000/google-plus--v1.png"
+          /></a>
         </div>
       </div>
     </div>
@@ -160,11 +177,11 @@
     if (no == 1) {
       price.innerText = val;
     } else if (no == 3) {
-      price.innerHTML = val * 3 - (val * 3) / 10;
+      price.innerHTML = Math.round(val * 3 - (val * 3) / 10);
     } else if (no == 6) {
-      price.innerText = val * 6 - (val * 6) / 10;
+      price.innerText = Math.round(val * 6 - (val * 6) / 10);
     } else if (no == 12) {
-      price.innerText = val * 12 - (val * 12) / 10;
+      price.innerText = Math.round(val * 12 - (val * 12) / 10);
     }
   }
   //=======================================
