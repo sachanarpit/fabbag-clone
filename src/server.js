@@ -20,6 +20,11 @@ app.use(express.json());
 app.use("/users", userController);
 app.use("/products", productController);
 
+// all page redirection
+//home pager
+app.get("", async (req, res) => {
+  return res.render("home.ejs");
+});
 // port listeing
 app.listen(2349, async () => {
   await connect();
