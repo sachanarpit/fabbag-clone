@@ -1,0 +1,106 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="/products/61538d3f5a247e5988d5c2c7"
+    >SUBSCRIBE NOW</a
+  >
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul
+      class="navbar-nav ml-auto"
+      style="background-color: rgba(165, 42, 42, 0)"
+    >
+      <img
+        style="
+          width: 15vw;
+          height: 8vh;
+          background-color: rgba(141, 100, 100, 0);
+        "
+        src="https://cdn.shopify.com/s/files/1/0052/7551/6995/files/FABBAG-LOGO_96ac9306-4c81-4ab8-8d2b-4e818eed7f76_2048x.png?v=1606482289"
+        alt=""
+      />
+    </ul>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#" onclick="popupToggle()"
+          ><img
+            src="https://img.icons8.com/ios-filled/25/000000/search--v2.png"
+          />
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#"
+          ><img
+            src="https://img.icons8.com/material-outlined/24/000000/like--v2.png"
+        /></a>
+      </li>
+      <li class="nav-item dropdown">
+        <a
+          class="nav-link dropdown-toggle"
+          href="#"
+          id="navbarDropdown"
+          role="button"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          <img src="https://img.icons8.com/ios-glyphs/24/000000/user.png" />
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="#" tabindex="-1" aria-disabled="true"
+          ><img
+            src="https://img.icons8.com/material-rounded/24/000000/favorite-cart.png"
+        /></a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<!-- navbar ends  -->
+
+<!-- navbar search popup  -->
+<div id="popup">
+  <div class="content">
+    <div class="inputbox">
+      <input
+        type="email"
+        placeholder="search product"
+        id="query"
+        onkeyup="Debaunce(main , 2000)"
+      />
+    </div>
+  </div>
+  <br />
+  <div class="search-results" id="search_main">
+    <!-- <a href="#">
+          <div class="search-products">
+            <img
+              src="https://cdn.shopify.com/s/files/1/0052/7551/6995/products/Women_sPageBanner-Skincare-Reveal-4-5_2faddde5-aa4f-4393-a694-5596034b6fed.png?v=1631337975"
+              alt=""
+            />
+            <p>The She-9-Igans September Fab Bag</p>
+            <p>Rs. 699.00</p>
+          </div>
+        </a> -->
+  </div>
+  <a href="#" class="close" onclick="popupToggle()"
+    ><img
+      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyhpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDIxIDc5LjE1NTc3MiwgMjAxNC8wMS8xMy0xOTo0NDowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTQgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MDA0NjVCNEM1NzE2MTFFNDhERDFFNjZCMDFBOTNERTgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MDA0NjVCNEQ1NzE2MTFFNDhERDFFNjZCMDFBOTNERTgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo0REQ4QjM3RjU3MTMxMUU0OEREMUU2NkIwMUE5M0RFOCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo0REQ4QjM4MDU3MTMxMUU0OEREMUU2NkIwMUE5M0RFOCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pv+S3nUAAAGaSURBVHja7NrBaoNAEAZgV3osoZScG0pewJfpXfCe3PTax+hjFPoefQc9ePBUQs/dzg8riKSNM6O2THZhIAg7zpeY3XXVee8TCy1NjLQIiZAIuRLIjaLvhuKO4pPig+JL8WUiz23Ic1rzF9lSPFVV9do0zYE+75DLOZdwIpx/hxzIhZwhN79hQmTGluKY5zlmUp9lmW/b9oWOPVKkjPOm6IO+yIFDyInc4RysulSIPriYc4g+pBg1gov5DaHBzIKYipmCkGJmQ1zCcBASzCXEhqKYivgJI0GMMEWoRQx5KMvynXPiM5g9QoLoAzWgFg3kvq7rZ2kB6Nd13RtCkwM1oBYNRHxJDAvR9B1doqo/uxqzNIIz/K6K4SK4E+IqGAlCskRZFCNFSCCLYTQIKWR2jBahgfSYvWaOGM41YeJMpfWYudW96kvLxJ/dxPBrYkI0sUQxsWg0s4w3c2Nl5lbXzOaDme0gUxt0prZMTW1im3qsMMQUGBbDGM9CjDHIEYbYQoJAOMWbD//q0ZuLr3BESIRESIT8RfsWYAA9kzqUqVtSdgAAAABJRU5ErkJggg=="
+      alt=""
+  /></a>
+</div>

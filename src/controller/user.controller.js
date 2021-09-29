@@ -12,9 +12,9 @@ router.get("", async (req, res) => {
   const user = await User.find().lean().exec();
   return res.status(200).send({ user });
 
-  //   return res.render("users.ejs", {
-  //     user: user,
-  //   });
+  // return res.render("users.ejs", {
+  //   user: user,
+  // });
 });
 
 module.exports = router;
