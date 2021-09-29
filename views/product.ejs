@@ -102,7 +102,7 @@
         <img src="<%= product.image_link %>" />
       </div>
       <div id="details">
-        <p><a><%= product.brand %></a></p>
+        <p><strong>Brand : </strong> <a><%= product.brand %></a></p>
         <h1><%= product.name %></h1>
         <h1>
           <%= product.price_sign %>.<span id="price"><%= product.price %></span
@@ -179,9 +179,9 @@
     } else if (no == 3) {
       price.innerHTML = Math.round(val * 3 - (val * 3) / 10);
     } else if (no == 6) {
-      price.innerText = Math.round(val * 6 - (val * 6) / 10);
+      price.innerText = Math.round(val * 6 - (val * 6) / 9);
     } else if (no == 12) {
-      price.innerText = Math.round(val * 12 - (val * 12) / 10);
+      price.innerText = Math.round(val * 12 - (val * 12) / 8);
     }
   }
   //=======================================

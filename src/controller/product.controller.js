@@ -34,4 +34,9 @@ router.get("/:id", async (req, res) => {
     product: product,
   });
 });
+
+router.get("/json/:id", async (req, res) => {
+  const product = await Product.findById(req.params.id).lean().exec();
+  return res.status(200).send({ product });
+});
 module.exports = router;
