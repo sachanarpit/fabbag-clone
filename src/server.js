@@ -25,6 +25,9 @@ app.use("/products", productController);
 app.get("", async (req, res) => {
   return res.render("home.ejs");
 });
+app.get("/cart", async (req, res) => {
+  return res.render("cart.ejs");
+});
 // port listeing
 app.listen(2349, async () => {
   await connect();

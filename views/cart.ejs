@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/home.css" />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+      }
+
+      /*-----------------------*/
+
+      #cartcont {
+        width: 90%;
+        margin: auto;
+        margin-top: 100px;
+      }
+      .itemsdetail {
+        width: 60%;
+        float: left;
+      }
+      .itemsdetail h1 {
+        margin-bottom: 50px;
+      }
+      .product {
+        display: flex;
+        flex-direction: row;
+        gap: 40px;
+        margin-bottom: 30px;
+      }
+      .product h4 {
+        margin-right: 60%;
+      }
+      .list {
+        display: flex;
+        flex-direction: row;
+        height: 150px;
+        align-items: center;
+        gap: 30px;
+      }
+      .cartimg {
+        width: 200px;
+        height: 100px;
+      }
+      #qty {
+        width: 50px;
+        height: 30px;
+        align-items: center;
+        text-align: center;
+        border: 1px solid gray;
+      }
+      .list button {
+        cursor: pointer;
+      }
+      .pricedetails {
+        float: right;
+        width: 30%;
+        background-color: #f7f7f7;
+        margin-top: 90px;
+        margin-right: 50px;
+      }
+      #total {
+        display: flex;
+        width: 100%;
+        height: 50px;
+        text-align: center;
+        align-items: center;
+      }
+      #rs {
+        margin-left: 35%;
+      }
+      #update {
+        width: 100%;
+        height: 50px;
+        text-align: center;
+        align-items: center;
+        color: white;
+        background-color: black;
+        margin-top: 20px;
+        cursor: pointer;
+      }
+      #checkout {
+        width: 100%;
+        height: 50px;
+        text-align: center;
+        align-items: center;
+        color: white;
+        background-color: #e5b95f;
+        margin-top: 20px;
+        cursor: pointer;
+      }
+      #update h3 {
+        padding: 10px;
+      }
+      #checkout h3 {
+        padding: 10px;
+      }
+    </style>
+    <%- include("partials/boilerPlateCss.ejs") %>
+  </head>
+  <body>
+    <%- include("partials/navbar.ejs") %>
+
+    <div id="cartcont">
+      <div class="itemsdetail">
+        <div><h1>My Cart</h1></div>
+        <hr />
+        <div class="product">
+          <h4>Product</h4>
+          <p>QTY</p>
+          <p>PRICE</p>
+        </div>
+        <hr />
+        <div class="list" id="product_list">
+          <!-- <img
+              class="cartimg"
+              src="https://cdn.shopify.com/s/files/1/0052/7551/6995/products/Women_sPageBanner-Skincare--Reveal-Bous-Product.gif?v=1629009087"
+            />
+            <p class="name">The Lash & Line August Fab Bag 1 Month</p>
+            <input type="number" id="qty" />
+            <p class="price">Rs.599.00</p>
+            <button onclick="cancel()">remove</button> -->
+        </div>
+        <hr />
+      </div>
+
+      <div class="pricedetails">
+        <div id="total">
+          <h3>TOTAL PRICE:</h3>
+          <h3 id="rs"></h3>
+        </div>
+        <div id="update"><h3 onclick="update()">UPDATE</h3></div>
+        <div id="checkout"><h3 onclick="gotopayment()">CHECKOUT</h3></div>
+      </div>
+    </div>
+  </body>
+</html>
+<%- include("partials/boilerPlateJs.ejs") %>
+
+<script src="../scripts/home.js"></script>
+
+<script>
+  //
+  //   var tp = JSON.parse(localStorage.getItem("total"));
+  //   total.innerText = `Rs.${tp}.00`;
+  //   document.getElementById("qty").value = 1;
+  //   document.getElementById("count").innerText = 1;
+  //=========================
+
+  function cancel() {}
+
+  function update() {
+    var total = document.getElementById("rs");
+    let tp = document.getElementById("total_price");
+
+    let qty = document.getElementById("qty").value;
+
+    let price = tp * qty;
+    total.innerText = `Rs.${price}.00`;
+  }
+
+  function gotopayment() {
+    window.location = "index.html";
+  }
+
+  // new js
+
+  // get all the product
+
+  async function getProducts() {
+    let product = await getData();
+    let pro_id = await product.product_id;
+
+    let res = await fetch(`http://localhost:2349/products/json/${pro_id}`);
+    let total_price = document.getElementById("rs");
+    let total_ho = product.price * product.quantity;
+    total_price.innerText = total_ho;
+    let data = await res.json();
+    let pro = data.product;
+    let product_sec = document.getElementById("product_list");
+    product_sec.innerHTML = null;
+    product_sec.innerHTML = ` <img
+              class="cartimg"
+              src="${pro.image_link}"
+            />
+            <p class="name">${pro.name}</p>
+            <input type="number" id="qty" value = "${product.quantity}" />
+            <p class="price" id="total_price">${product.price}</p>
+            <button onclick="cancel()">remove</button>`;
+  }
+  getProducts();
+
+  async function getData() {
+    let user_id = localStorage.getItem("id");
+    console.log("user_id:", user_id);
+    let res = await fetch(`http://localhost:2349/users/${user_id}`);
+    let data = await res.json();
+    let cart = data.user.cart;
+    return cart[0];
+  }
+</script>
