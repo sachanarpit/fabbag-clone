@@ -28,6 +28,15 @@ app.get("", async (req, res) => {
 app.get("/cart", async (req, res) => {
   return res.render("cart.ejs");
 });
+app.get("/login", async (req, res) => {
+  return res.render("login.ejs");
+});
+app.get("/register", async (req, res) => {
+  return res.render("register.ejs");
+});
+app.get("/checkout", async (req, res) => {
+  return res.render("checkout.ejs");
+});
 // port listeing
 app.listen(2349, async () => {
   await connect();
