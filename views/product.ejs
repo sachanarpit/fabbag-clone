@@ -130,8 +130,8 @@
           <p id="Qunt">1</p>
           <p onclick="increaseQunt()">+</p>
         </div>
-        <div id="carttext">ADD TO CART</div>
-        <div id="carticon" onclick="gotocart()">
+        <div id="carttext" onclick="SendData()">ADD TO CART</div>
+        <div id="carticon">
           <img src="https://image.flaticon.com/icons/png/128/34/34568.png" />
         </div>
         <br />
@@ -151,6 +151,7 @@
               src="https://img.icons8.com/color/48/000000/google-plus--v1.png"
           /></a>
         </div>
+        <div id="page_id" style="display: none"><%=product._id %></div>
       </div>
     </div>
   </body>
@@ -189,6 +190,27 @@
     var total = Number(price) * Number(qnt);
     localStorage.setItem("total", JSON.stringify(total));
     window.location = "cart.html";
+  }
+
+  async function SendData() {
+    let user_id = localStorage.getItem("id");
+    let price = document.getElementById("price").value;
+    let page_id = document.getElementById("page_id").value;
+    let qunt = document.getElementById("Qunt").value;
+    let schema_data = {
+      product_id: page_id,
+      price: price,
+      quantity: qunt,
+    };
+
+    let res = await fetch(`http://localhost:2349/${user_id}`, {
+      method: "PATCH",
+      body: JSON.stringify({
+        cart: [schema_data],
+      }),
+      headers: { "Content-Type": "application/json" },
+    });
+    alert("product is added on cart");
   }
 </script>
 <script src="../scripts/home.js"></script>
