@@ -40,6 +40,9 @@ app.get("/register", async (req, res) => {
 app.get("/checkout", async (req, res) => {
   return res.render("checkout.ejs");
 });
+app.get("/thankyou", async (req, res) => {
+  return res.render("thankyou.ejs");
+});
 // port listeing
 app.listen(2349, async () => {
   await connect();

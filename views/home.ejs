@@ -10,6 +10,133 @@
     />
     <link rel="stylesheet" href="css/home.css" />
     <link rel="stylesheet" href="css/subscription.css" />
+
+    <style>
+      .footer-dark {
+  padding:50px 0;
+  color:#f0f9ff;
+  background-color:#282d32;
+}
+
+.footer-dark .text {
+  padding:0 15px;
+}
+
+.footer-dark h3 {
+  margin-top:0;
+  margin-bottom:12px;
+  font-weight:bold;
+  font-size:16px;
+  border-left: 3px solid #eeeeee;
+  padding-left: 10px;
+}
+
+.footer-dark ul {
+  padding:0;
+  list-style:none;
+  line-height:1.6;
+  font-size:14px;
+  margin-bottom:0;
+}
+
+.footer-dark ul li{
+  padding: 0 0 .2em 1.0em; 
+}
+
+.footer-dark ul a {
+  color:inherit;
+  text-decoration:none;
+  opacity:0.6;
+}
+
+.footer-dark ul a:hover {
+  opacity:1.0;  
+  font-size:16px;
+  -webkit-transition: .5s all ease;
+  -moz-transition: .5s all ease;
+  transition: .5s all ease;
+}
+
+.footer-dark ul.social li{
+  padding: 3px 0;
+}
+.footer-dark ul.social li a i {
+    margin-right: 5px;
+  font-size:25px;
+  -webkit-transition: .5s all ease;
+  -moz-transition: .5s all ease;
+  transition: .5s all ease;
+}
+.footer-dark ul.social li:hover a i {
+  font-size:30px;
+  margin-top:-10px;
+}
+.footer-dark ul.social li a{
+  color:#ffffff;
+}
+.footer-dark ul.social li a:hover{
+  color:#eeeeee;
+}
+
+@media (max-width:767px) {
+  .footer-dark .item:not(.social) {
+    text-align:center;
+    padding-bottom:20px;
+  }
+}
+
+.footer-dark .item.text {
+  margin-bottom:36px;
+}
+
+@media (max-width:767px) {
+  .footer-dark .item.text {
+    margin-bottom:0;
+  }
+}
+
+.footer-dark .item.text p {
+  opacity:0.6;
+  margin-bottom:0;
+}
+
+.footer-dark .item.social {
+  text-align:center;
+}
+
+@media (max-width:991px) {
+  .footer-dark .item.social {
+    text-align:center;
+    margin-top:20px;
+  }
+}
+
+.footer-dark .item.social > a {
+  font-size:20px;
+  width:36px;
+  height:36px;
+  line-height:36px;
+  display:inline-block;
+  text-align:center;
+  border-radius:50%;
+  box-shadow:0 0 0 1px rgba(255,255,255,0.4);
+  margin:0 8px;
+  color:#fff;
+  opacity:0.75;
+}
+
+.footer-dark .item.social > a:hover {
+  opacity:0.9;
+}
+
+.footer-dark .copyright {
+  text-align:center;
+  padding-top:24px;
+  opacity:0.3;
+  font-size:13px;
+  margin-bottom:0;
+}
+    </style>
     <!-- Bootstrap CSS -->
     <%- include("partials/boilerPlateCss.ejs") %>
   </head>
@@ -80,10 +207,115 @@
 
     <!-- what's in the bag carousel starts  -->
     <!-- _____________________________________________________ -->
+    <!-- product slider    -->
+    <hr>
+<br>
+<center><h1>WHAT'S IN THE BAG</h1><center>
+
+    <section class="pt-5 circle-1">
+      <div class="container pb-5 position-relative">
+        <div
+          id="demo"
+          class="carousel slide position-relative"
+          data-ride="carousel"
+        >
+          <!-- Indicators -->
+          <ul class="carousel-indicators">
+            <li data-target="#demo" data-slide-to="0" class=""></li>
+            <li data-target="#demo" data-slide-to="1" class="active"></li>
+          </ul>
+
+          <!-- The slideshow -->
+          <div class="carousel-inner">
+            <a href="/products/61538d3f5a247e5988d5c2c7">
+              <div class="carousel-item active carousel-item-left">
+                <div class="d-flex">
+                  <div class="col-lg-4 col-sm-12 col-12 d-flex flex-column">
+                    <img
+                      src="https://cdn.shopify.com/s/files/1/0052/7551/6995/files/What_s-In-The-Bag--Skincare-Reveal-4_2048x.png?v=1633027124"
+                      alt=""
+                    />
+                    <center><h5>CREME CRAYON OF YOUR COICE</h5></center>
+                  </div>
+                  <div class="col-lg-4 col-sm-12 col-12 d-flex flex-column">
+                    <img
+                      src="https://cdn.shopify.com/s/files/1/0052/7551/6995/files/What_s-In-The-Bag--Skincare-Reveal-3_2048x.png?v=1633027123"
+                      alt=""
+                    />
+                    <center><h5>NAIL LACQUER*</h5></center>
+                  </div>
+                  <div class="col-lg-4 col-sm-12 col-12 d-flex flex-column">
+                    <img
+                      src="https://cdn.shopify.com/s/files/1/0052/7551/6995/files/What_s-In-The-Bag--Skincare-Reveal-2_35052921-087e-4e9b-88cb-78ab245bc1de_2048x.png?v=1633027123"
+                      alt=""
+                    />
+                    <center><h5>EYE BROW GROWTH OIL</h5></center>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item carousel-item-next carousel-item-left">
+                <div class="d-flex">
+                  <div class="col-lg-4 col-sm-12 col-12 d-flex flex-column">
+                    <img
+                      src="https://cdn.shopify.com/s/files/1/0052/7551/6995/files/What_s-In-The-Bag--Skincare-Reveal-1_a8f6d8f0-2971-486c-9323-3fdda234dbb7_2048x.png?v=1633027123"
+                      alt=""
+                    />
+                    <center><h5>MON CHERRY SHEET MASK</h5></center>
+                  </div>
+                  <div class="col-lg-4 col-sm-12 col-12 d-flex flex-column">
+                    <img
+                      src="https://cdn.shopify.com/s/files/1/0052/7551/6995/files/What_s-In-The-Bag-makeup-Reveal-2_9fb736f1-ea90-440b-934f-c89c957b6951_2048x.png?v=1633027123"
+                      alt=""
+                    />
+                    <center><h5>ORGANIC SOAP</h5></center>
+                  </div>
+                  <div class="col-lg-4 col-sm-12 col-12 d-flex flex-column">
+                    <img
+                      src="https://cdn.shopify.com/s/files/1/0052/7551/6995/files/What_s-In-The-Bag-makeup-Reveal-1_792bf07e-fa52-4102-95dc-302bc6a83d45_2048x.png?v=1633027123"
+                      alt=""
+                    />
+                    <center><h5>BONUS</h5></center>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <!-- Left and right controls -->
+
+          <a
+            class="carousel-control-prev"
+            href="#demo"
+            data-slide="prev"
+            style="opacity: 1; left: -10%"
+          >
+            <i
+              class="fas fa-chevron-left"
+              style="color: #5969f6; font-size: 30px"
+            ></i>
+          </a>
+          <a
+            class="carousel-control-next"
+            href="#demo"
+            data-slide="next"
+            style="opacity: 1; transform: rotate(-180deg); right: -10%"
+          >
+            <i
+              class="fas fa-chevron-left"
+              style="color: #5969f6; font-size: 30px"
+            ></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <hr>
 
     <!-- subscription box  -->
     <%- include("partials/subscription.ejs") %>
     <!-- subscription box ends  -->
+
+     
   </body>
 </html>
 <%- include("partials/boilerPlateJs.ejs") %>
