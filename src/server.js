@@ -19,6 +19,7 @@ app.use(express.static("public"));
 app.use(express.json());
 app.use("/users", userController);
 app.use("/products", productController);
+app.use("/orders", orderController);
 
 // all page redirection
 //home pager
