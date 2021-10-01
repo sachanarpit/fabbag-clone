@@ -1,21 +1,25 @@
 const mongoose = require("mongoose");
 
-const productSchema = new mongoose.Schema(
+const orderSchema = new mongoose.Schema(
   {
-    id: { type: Number, required: true },
-    brand: { type: String, required: false },
-    name: { type: String, required: true },
-    price: { type: Number },
-    price_sign: { type: String, required: false },
-    currency: { type: String, required: false },
-    image_link: { type: String, required: false },
-    product_link: { type: String, required: false },
-    website_link: { type: String, required: false },
-    description: { type: String, required: false },
-    rating: { type: String, required: false },
-    category: { type: String, required: false },
-    product_type: { type: String, required: false },
-    api_featured_image: { type: String, required: false },
+    userId: { type: String },
+    name: { type: String },
+    email: { type: String, required: true },
+    mobile: {
+      type: Number,
+      min: 1000000000,
+      max: 9999999999,
+      unique: true,
+    },
+    adress: {
+      houseNo: { type: String },
+      state: { type: String },
+      city: { type: String },
+      pincode: { type: Number, min: 100000, max: 999999 },
+    },
+    order_id: { type: String },
+    payment_id: { type: String },
+    signature: { type: String },
   },
   {
     versionKey: false,
@@ -23,6 +27,6 @@ const productSchema = new mongoose.Schema(
   }
 );
 
-const Product = mongoose.model("products", productSchema);
+const Product = mongoose.model("orders", orderSchema);
 
 module.exports = Product;

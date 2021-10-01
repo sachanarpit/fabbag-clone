@@ -10,6 +10,8 @@ const userController = require(`./controller/user.controller`);
 
 const productController = require(`./controller/product.controller`);
 
+const orderController = require(`./controller/order.controller`);
+
 const app = express();
 
 app.set("view Engine", "ejs");
