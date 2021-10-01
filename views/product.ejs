@@ -82,7 +82,9 @@
       }
     </style>
     <link rel="stylesheet" href="../css/home.css" />
+
     <%- include("partials/boilerPlateCss.ejs") %>
+    <link rel="stylesheet" href="../css/footer.css" />
   </head>
   <body>
     <%- include("partials/navbar.ejs") %>
@@ -150,6 +152,9 @@
         <div id="page_id" style="display: none"><%=product._id %></div>
       </div>
     </div>
+    <br />
+    <br />
+    <%- include("partials/footer.ejs") %>
   </body>
 </html>
 
@@ -199,13 +204,13 @@
       quantity: qunt,
     };
 
-    let res = await fetch(`http://localhost:2349/${user_id}`, {
-      method: "PATCH",
-      body: JSON.stringify({
-        cart: [schema_data],
-      }),
-      headers: { "Content-Type": "application/json" },
-    });
+    // let res = await fetch(`http://localhost:2349/${user_id}`, {
+    //   method: "PATCH",
+    //   body: JSON.stringify({
+    //     cart: [schema_data],
+    //   }),
+    //   headers: { "Content-Type": "application/json" },
+    // });
     alert("product is added on cart");
   }
 </script>
