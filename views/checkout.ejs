@@ -258,14 +258,14 @@
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 <script>
   var options = {
-    key: "rzp_live_xyBInAyww47gNk", // Enter the Key ID generated from the Dashboard
+    key: "Please type you key", // Enter the Key ID generated from the Dashboard
     amount: "200", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
     currency: "INR",
     name: "Arpit Sachan",
     description: "Test Transaction",
     image:
       "https://cdn.shopify.com/s/files/1/0052/7551/6995/files/FABBAG-LOGO_96ac9306-4c81-4ab8-8d2b-4e818eed7f76_2048x.png?v=1606482289",
-    order_id: "order_I43kpNdr10IybW", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+    order_id: "please fill order id", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
     handler: async function (response) {
       localStorage.setItem("payment_id", response.razorpay_payment_id);
       localStorage.setItem("order_id", response.razorpay_order_id);

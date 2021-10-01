@@ -8,7 +8,7 @@ function popupToggle() {
 //search api fetcing
 
 async function searchProduct(name) {
-  let res = await fetch(`http://localhost:2349/products/search/${name}`);
+  let res = await fetch(`/products/search/${name}`);
   let data = await res.json();
   return data;
 }
@@ -21,7 +21,7 @@ function appendProducts(m) {
     //   let p = document.createElement("p");
     //   p.innerText = _id;
     let a = document.createElement("a");
-    a.href = `http://localhost:2349/products/${_id}`;
+    a.href = `/products/${_id}`;
     a.innerHTML = `  <div class="search-products">
             <img
               src="${image_link}"
