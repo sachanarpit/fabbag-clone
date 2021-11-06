@@ -44,7 +44,16 @@ app.get("/thankyou", async (req, res) => {
   return res.render("thankyou.ejs");
 });
 // port listeing
-app.listen(2349, async () => {
+// app.listen(2349, async () => {
+//   await connect();
+//   console.log("Port 2349 is listing");
+// });
+
+const start = async () => {
   await connect();
-  console.log("Port 2349 is listing");
-});
+  app.listen(2349, () => {
+    console.log("listing to port 2349");
+  });
+};
+
+module.exports = start;
