@@ -51,7 +51,7 @@ app.get("/thankyou", async (req, res) => {
 
 const start = async () => {
   await connect();
-  app.listen(2349, () => {
+  app.listen(3000, () => {
     console.log("listing to port 2349");
   });
 };
