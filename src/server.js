@@ -49,10 +49,12 @@ app.get("/thankyou", async (req, res) => {
 //   console.log("Port 2349 is listing");
 // });
 
+let port = process.env.PORT;
+
 const start = async () => {
   await connect();
-  app.listen(3000, () => {
-    console.log("listing to port 2349");
+  app.listen(port, () => {
+    console.log("listing to port " + port);
   });
 };
 
