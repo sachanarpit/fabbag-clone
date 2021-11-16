@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
-
+require("dotenv").config();
 
 const connect = () => {
   return mongoose.connect(
-    "mongodb+srv://{username}:{Password}9@cluster0.swzgm.mongodb.net/fabbag_db?retryWrites=true&w=majority"
+    `mongodb+srv://${process.env.USER}:${process.env.PASSWORD}@cluster0.swzgm.mongodb.net/fabbag_db?retryWrites=true&w=majority`
   );
 };
 
